@@ -10,7 +10,7 @@ import { MovimentacoesService, Movimentacao } from '../movimentacoes-service';
   templateUrl: './financeiro.html',
   styleUrl: './financeiro.css'
 })
-export class MovimentacoesFinanceira implements OnInit {
+export class Financeiro implements OnInit {
   private api = inject(MovimentacoesService);
 
   movimentacoes: Movimentacao[] = [];
