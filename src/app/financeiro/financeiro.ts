@@ -13,7 +13,7 @@ import { MovimentacoesService, Movimentacao } from '../movimentacoes-service';
 @Component({
   selector: 'app-financeiro',      
   standalone: true,               
-  imports: [FormsModule, NgIf, NgFor, DatePipe, CurrencyPipe], 
+  imports: [FormsModule, DatePipe, CurrencyPipe], 
   templateUrl: './financeiro.html', 
   styleUrl: './financeiro.css'      
 })
