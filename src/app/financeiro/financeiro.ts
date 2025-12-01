@@ -11,11 +11,11 @@ import { MovimentacoesService, Movimentacao } from '../movimentacoes-service';
 // Service e interface das movimentações
 
 @Component({
-  selector: 'app-financeiro',      // Nome da tag do componente
-  standalone: true,                // Componente independente
-  imports: [FormsModule, NgIf, NgFor, DatePipe, CurrencyPipe], // Recursos usados
-  templateUrl: './financeiro.html', // HTML do componente
-  styleUrl: './financeiro.css'      // CSS do componente
+  selector: 'app-financeiro',      
+  standalone: true,               
+  imports: [FormsModule, NgIf, NgFor, DatePipe, CurrencyPipe], 
+  templateUrl: './financeiro.html', 
+  styleUrl: './financeiro.css'      
 })
 export class Financeiro implements OnInit {
 
