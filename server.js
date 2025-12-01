@@ -19,16 +19,7 @@ mongoose.connect(process.env.MONGODB_URI, { dbName: 'movimentacoes' })
   .then(() => console.log('Conectado ao MongoDB'))
   .catch(err => console.error('Erro na conexão:', err.message));
 
-/**
- * MODELO Movimentacao
- *
- * Campos:
- * - tipo:      'receita' ou 'despesa'
- * - categoria: texto (ex: Alimentação, Salário)
- * - descricao: texto livre
- * - valor:     número >= 0
- * - data:      data da movimentação
- */
+  
 const movimentacaoSchema = new mongoose.Schema({
   tipo: {
     type: String,
@@ -65,10 +56,6 @@ const Movimentacao = mongoose.model('Movimentacao', movimentacaoSchema, 'movimen
 
 // Rota inicial (teste rápido)
 app.get('/', (req, res) => res.json({ msg: 'API Gestor Financeiro rodando' }));
-
-// ========================
-// ROTAS /movimentacoes
-// ========================
 
 // Criar movimentação
 app.post('/movimentacoes', async (req, res) => {
