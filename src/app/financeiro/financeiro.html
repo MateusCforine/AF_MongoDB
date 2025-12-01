@@ -3,9 +3,11 @@
 <section class="form">
   <h2>Nova movimentação</h2>
 
+  <!-- Chama o método criar() do TS quando o formulário é enviado -->
   <form (ngSubmit)="criar()">
     <div>
       <label>Tipo</label>
+      <!-- ngModel ligado à variável 'tipo' no TS -->
       <select [(ngModel)]="tipo" name="tipo">
         <option value="receita">Receita</option>
         <option value="despesa">Despesa</option>
@@ -45,46 +47,60 @@
 <section class="lista">
   <h2>Movimentações</h2>
 
-  <p *ngIf="carregando">Carregando...</p>
-  <p *ngIf="erro">{{ erro }}</p>
+  <!-- @if substituindo *ngIf -->
+  @if (carregando) {
+    <p>Carregando...</p>
+  }
 
-  <p *ngIf="!carregando && movimentacoes.length === 0">
-    Nenhuma movimentação cadastrada.
-  </p>
+  @if (erro) {
+    <p>{{ erro }}</p>
+  }
 
-  <table *ngIf="movimentacoes.length > 0">
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th>Tipo</th>
-        <th>Categoria</th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let m of movimentacoes"
-        [class.receita]="m.tipo === 'receita'"
-        [class.despesa]="m.tipo === 'despesa'"
-      >
-        <td>{{ m.data | date: 'dd/MM/yyyy' }}</td>
-        <td>{{ m.tipo }}</td>
-        <td>{{ m.categoria }}</td>
-        <td>{{ m.descricao }}</td>
-        <td>{{ m.valor | currency: 'BRL' : 'symbol' }}</td>
-        <td>
-          <button type="button" (click)="excluir(m)">Excluir</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  @if (!carregando && movimentacoes.length === 0) {
+    <p>Nenhuma movimentação cadastrada.</p>
+  }
 
-  <div class="saldo" *ngIf="movimentacoes.length > 0">
-    Saldo:
-    <span [class.positivo]="saldo >= 0" [class.negativo]="saldo < 0">
-      {{ saldo | currency: 'BRL' : 'symbol' }}
-    </span>
-  </div>
+  @if (movimentacoes.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Categoria</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- @for substituindo *ngFor -->
+        @for (m of movimentacoes; track m._id) {
+          <tr
+            [class.receita]="m.tipo === 'receita'"
+            [class.despesa]="m.tipo === 'despesa'"
+          >
+            <td>{{ m.data | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ m.tipo }}</td>
+            <td>{{ m.categoria }}</td>
+            <td>{{ m.descricao }}</td>
+            <td>{{ m.valor | currency:'BRL':'symbol' }}</td>
+
+            <td>
+              <button type="button" (click)="excluir(m)">Excluir</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+  @if (movimentacoes.length > 0) {
+    <div class="saldo">
+      Saldo:
+      <span [class.positivo]="saldo >= 0" [class.negativo]="saldo < 0">
+        {{ saldo | currency:'BRL':'symbol' }}
+      </span>
+    </div>
+  }
 </section>
