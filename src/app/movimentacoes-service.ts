@@ -17,8 +17,8 @@ export interface Movimentacao {
 })
 export class MovimentacoesService {
 
-  private http = inject(HttpClient);  // Injeta o HttpClient
-  private baseUrl = 'http://localhost:3000/movimentacoes'; // URL da API
+  private http = inject(HttpClient);  
+  private baseUrl = 'http://localhost:3000/movimentacoes'; 
 
   listar(): Observable<Movimentacao[]> {
     // Faz uma requisição GET e retorna todas as movimentações

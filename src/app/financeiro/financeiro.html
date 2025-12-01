@@ -47,7 +47,7 @@
 <section class="lista">
   <h2>Movimentações</h2>
 
-  <!-- @if substituindo *ngIf -->
+ 
   @if (carregando) {
     <p>Carregando...</p>
   }
@@ -74,7 +74,7 @@
       </thead>
 
       <tbody>
-      <!-- @for substitui *ngFor — repete para cada item da lista -->
+      <!--repete para cada item da lista -->
         @for (m of movimentacoes; track m._id) {
           <tr
             [class.receita]="m.tipo === 'receita'"
