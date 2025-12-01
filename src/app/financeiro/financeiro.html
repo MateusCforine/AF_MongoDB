@@ -55,7 +55,7 @@
   @if (erro) {
     <p>{{ erro }}</p>
   }
-
+  <!-- Se existir pelo menos uma movimentação, exibe a tabela -->
   @if (!carregando && movimentacoes.length === 0) {
     <p>Nenhuma movimentação cadastrada.</p>
   }
@@ -74,7 +74,7 @@
       </thead>
 
       <tbody>
-        <!-- @for substituindo *ngFor -->
+      <!-- @for substitui *ngFor — repete para cada item da lista -->
         @for (m of movimentacoes; track m._id) {
           <tr
             [class.receita]="m.tipo === 'receita'"

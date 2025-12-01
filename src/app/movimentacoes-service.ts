@@ -1,19 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-// Para criar serviços e injetar dependências
-
 import { HttpClient } from '@angular/common/http';
-// Para fazer requisições HTTP
-
 import { Observable } from 'rxjs';
-// Tipo usado para respostas assíncronas
+
 
 export interface Movimentacao {
-  _id?: string;                 // ID gerado pelo MongoDB
-  tipo: 'receita' | 'despesa';  // Tipo da movimentação
-  categoria: string;            // Categoria escolhida
-  descricao: string;            // Descrição
-  valor: number;                // Valor
-  data: string;                 // Data (formato yyyy-MM-dd)
+  _id?: string;                 
+  tipo: 'receita' | 'despesa';  
+  categoria: string;            
+  descricao: string;            
+  valor: number;                
+  data: string;                 
 }
 
 @Injectable({

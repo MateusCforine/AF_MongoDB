@@ -1,8 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-// Ferramentas para configurar e testar serviços Angular
-
 import { MovimentacoesService } from './movimentacoes-service';
-// Serviço que será testado
 
 describe('MovimentacoesService', () => {
   let service: MovimentacoesService; // Instância do service
